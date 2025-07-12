@@ -23,65 +23,16 @@ client = AsyncOpenAI(
 
 async def generate_response(instructions, history):
     messages = [
-            {"role": "system", "name": "instructions", "content": instructions},
-            *history,
-        ]
-
-    tools = [
-        {
-            "type": "function",
-            "function": {
-                "name": "searchtool",
-                "description": "Searches the internet.",
-                "parameters": {
-                    "type": "object",
-                    "properties": {
-                        "query": {
-                            "type": "string",
-                            "description": "The query for search engine",
-                        }
-                    },
-                    "required": ["query"],
-                },
-            },
-        }
+        {"role": "system", "name": "instructions", "content": instructions},
+        *history,
     ]
+
+    # REMOVED ALL TOOL-RELATED CODE
     response = await client.chat.completions.create(
         model=config['MODEL_ID'],
         messages=messages,
-        tools=tools,
-        tool_choice="auto",
     )
-    response_message = response.choices[0].message
-    tool_calls = response_message.tool_calls
-
-    if tool_calls:
-        available_functions = {
-            "searchtool": duckduckgotool,
-        }
-        messages.append(response_message)
-
-        for tool_call in tool_calls:
-            function_name = tool_call.function.name
-            function_to_call = available_functions[function_name]
-            function_args = json.loads(tool_call.function.arguments)
-            function_response = await function_to_call(
-                query=function_args.get("query")
-            )
-            messages.append(
-                {
-                    "tool_call_id": tool_call.id,
-                    "role": "tool",
-                    "name": function_name,
-                    "content": function_response,
-                }
-            )
-        second_response = await client.chat.completions.create(
-            model=config['MODEL_ID'],
-            messages=messages
-        )
-        return second_response.choices[0].message.content
-    return response_message.content
+    return response.choices[0].message.content
 
 async def poly_image_gen(session, prompt):
     seed = random.randint(1, 100000)
