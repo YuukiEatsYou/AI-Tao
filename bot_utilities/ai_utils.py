@@ -9,7 +9,6 @@ from gtts import gTTS
 from urllib.parse import quote
 from bot_utilities.config_loader import load_current_language, config
 from openai import AsyncOpenAI
-from duckduckgo_search import AsyncDDGS
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -83,19 +82,6 @@ async def generate_response(instructions, history):
         ) 
         return second_response.choices[0].message.content
     return response_message.content
-
-async def duckduckgotool(query) -> str:
-    if config['INTERNET_ACCESS']:
-        return "internet access has been disabled by user"
-    blob = ''
-    results = await AsyncDDGS(proxy=None).text(query, max_results=6)
-    try:
-        for index, result in enumerate(results[:6]):  # Limiting to 6 results
-            blob += f'[{index}] Title : {result["title"]}\nSnippet : {result["body"]}\n\n\n Provide a cohesive response base on provided Search results'
-    except Exception as e:
-        blob += f"Search error: {e}\n"
-    return blob
-
 
 async def poly_image_gen(session, prompt):
     seed = random.randint(1, 100000)
