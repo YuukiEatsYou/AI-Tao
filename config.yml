@@ -30,9 +30,9 @@ TRIGGER:
 
 AUTO_SHARDING: true
 
-DISABLE_PRESENCE: true 
+DISABLE_PRESENCE: false 
 PRESENCES:
-  - "I'm a bot"
+  - "https://github.com/YuukiEatsYou/AI-Tao"
 # List of different presences to be used
 
 
