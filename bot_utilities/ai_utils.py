@@ -48,7 +48,7 @@ async def generate_response(instructions, history):
     ]
     response = await client.chat.completions.create(
         model=config['MODEL_ID'],
-        messages=messages,        
+        messages=messages,
         tools=tools,
         tool_choice="auto",
     )
@@ -79,7 +79,7 @@ async def generate_response(instructions, history):
         second_response = await client.chat.completions.create(
             model=config['MODEL_ID'],
             messages=messages
-        ) 
+        )
         return second_response.choices[0].message.content
     return response_message.content
 
@@ -115,7 +115,7 @@ async def generate_image_prodia(prompt, model, sampler, seed, neg):
             async with session.get(url, params=params) as response:
                 data = await response.json()
                 return data['job']
-            
+
     job_id = await create_job(prompt, model, sampler, seed, neg)
     url = f'https://api.prodia.com/job/{job_id}'
     headers = {
@@ -134,11 +134,3 @@ async def generate_image_prodia(prompt, model, sampler, seed, neg):
                         duration = time.time() - start_time
                         print(f"\033[1;34m(Prodia) Finished image creation\n\033[0mJob id : {job_id}  Prompt : ", prompt, "in", duration, "seconds.")
                         return img_file_obj
-
-async def text_to_speech(text):
-    bytes_obj = io.BytesIO()
-    detected_language = detect(text)
-    tts = gTTS(text=text, lang=detected_language)
-    tts.write_to_fp(bytes_obj)
-    bytes_obj.seek(0)
-    return bytes_obj

@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 
 from bot_utilities.response_utils import split_response
-from bot_utilities.ai_utils import generate_response, text_to_speech
+from bot_utilities.ai_utils import generate_response
 from bot_utilities.config_loader import config, load_active_channels
 from ..common import allow_dm, trigger_words, replied_messages, smart_mention, message_history,  MAX_HISTORY, instructions
 
@@ -47,7 +47,6 @@ class OnMessage(commands.Cog):
         return await generate_response(instructions=instructions, history=history)
 
     async def send_response(self, message, response):
-        bytes_obj = await text_to_speech(response)
         author_voice_channel = None
         author_member = None
         if message.guild:
