@@ -30,7 +30,7 @@ TRIGGER:
 
 AUTO_SHARDING: true
 
-DISABLE_PRESENCE: false 
+DISABLE_PRESENCE: true 
 PRESENCES:
   - "https://github.com/YuukiEatsYou/AI-Tao"
 # List of different presences to be used
