@@ -7,14 +7,12 @@
 <summary><strong>Features ✨ (Click to expand)</strong></summary>
 
 - [x] Hybrid Command System: Get the best of slash and normal commands. It's like a buffet! ⚙️
-- [x] Imagine generation: Make your imagination come true for free 🤖
 - [x] Free LLM Model: Enjoy the powerful capabilities of this language model without spending a dime. 🤖
 - [x] Mention Recognition: The bot always responds when you mention it or say its name. It's as attentive as a squirrel spotting a shiny acorn! ⚙️
 - [x] Message Handling: The bot knows when you're replying to someone else, so it won't cause confusion. It's like having a mind reader on your server! 🪄
 - [x] Channel-Specific Responses: Use the `/toggleactive` command to chill the bot in a specific channel. ⚙️
 - [x] Opensource models: Leverage the powers opensource models via 🤖
 - [x] Secure Credential Management: Keep your credentials secure using environment variables. 🔑
-- [x] Web Access: Web Access is now available! Unlock a whole new level of awesomeness. 🌐
 
 </details>
 
