@@ -87,11 +87,11 @@ To create a custom personality, follow these steps:
 
 ### Step 1. 🎬 Git clone repository
 ```
-git clone https://github.com/mishalhossin/Discord-AI-Chatbot
+git clone https://github.com/YuukiEatsYou/AI-Tao
 ```
 ### Step 2. 📁 Changing directory to cloned directory
 ```
-cd Discord-AI-Chatbot
+cd AI-Tao
 ```
 ### Step 3. 💾 Install requirements
 ```
