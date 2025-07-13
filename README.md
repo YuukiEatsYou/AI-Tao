@@ -115,7 +115,7 @@ python3.10 -m pip install -r requirements.txt
 </details>
 
 ### Step 5. 🔑 Get Groq api key from [here](https://console.groq.com/keys)
-### Step 6. 🔐 Rename `example.env` to `.env` and put the Discord bot token and your Groq key. It will look like this:
+### Step 6. 🔐 Create a`.env` file and put the Discord bot token and your Groq key. It will look like this:
 ```
 DISCORD_TOKEN=YOUR_DISCORD_BOT_TOKEN
 API_KEY=YOUR_GROQ_API_KEY
