@@ -1,11 +1,27 @@
 import discord
 from discord.ext import commands
+import re
 
 from bot_utilities.response_utils import split_response
 from bot_utilities.ai_utils import generate_response
 from bot_utilities.config_loader import config, load_active_channels
 from ..common import allow_dm, trigger_words, replied_messages, smart_mention, message_history,  MAX_HISTORY, instructions
 
+def clean_emoji_syntax(text: str) -> str:
+    """
+    Remove Discord emoji syntax from text to prevent false triggers.
+
+    This removes:
+    - Custom emojis: <:name:id> and <a:name:id>
+    - Unicode emoji shortcodes: :emoji_name:
+    """
+    # Remove custom Discord emojis (animated and static)
+    text = re.sub(r'<a?:[^:]+:\d+>', '', text)
+
+    # Remove emoji shortcodes (like :smile:, :chatbot:, etc.)
+    text = re.sub(r':[a-zA-Z0-9_+-]+:', '', text)
+
+    return text.strip()
 
 class OnMessage(commands.Cog):
     def __init__(self, bot):
@@ -14,13 +30,15 @@ class OnMessage(commands.Cog):
         self.instructions = instructions
 
     async def process_message(self, message):
+        print(message.content)
         active_channels = self.active_channels()
         string_channel_id = f"{message.channel.id}"
         is_replied = (message.reference and message.reference.resolved.author == self.bot.user) and smart_mention
         is_dm_channel = isinstance(message.channel, discord.DMChannel)
         is_active_channel = string_channel_id in active_channels
         is_allowed_dm = allow_dm and is_dm_channel
-        contains_trigger_word = any(word in message.content for word in trigger_words)
+        cleaned_content = clean_emoji_syntax(message.content)
+        contains_trigger_word = any(word in cleaned_content for word in trigger_words)
         is_bot_mentioned = self.bot.user.mentioned_in(message) and smart_mention and not message.mention_everyone
         bot_name_in_message = self.bot.user.name.lower() in message.content.lower() and smart_mention
 
