@@ -30,7 +30,6 @@ class OnMessage(commands.Cog):
         self.instructions = instructions
 
     async def process_message(self, message):
-        print(message.content)
         active_channels = self.active_channels()
         string_channel_id = f"{message.channel.id}"
         is_replied = (message.reference and message.reference.resolved.author == self.bot.user) and smart_mention
