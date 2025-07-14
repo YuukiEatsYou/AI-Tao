@@ -7,14 +7,12 @@
 <summary><strong>Features ✨ (Click to expand)</strong></summary>
 
 - [x] Hybrid Command System: Get the best of slash and normal commands. It's like a buffet! ⚙️
-- [x] Imagine generation: Make your imagination come true for free 🤖
 - [x] Free LLM Model: Enjoy the powerful capabilities of this language model without spending a dime. 🤖
 - [x] Mention Recognition: The bot always responds when you mention it or say its name. It's as attentive as a squirrel spotting a shiny acorn! ⚙️
 - [x] Message Handling: The bot knows when you're replying to someone else, so it won't cause confusion. It's like having a mind reader on your server! 🪄
 - [x] Channel-Specific Responses: Use the `/toggleactive` command to chill the bot in a specific channel. ⚙️
 - [x] Opensource models: Leverage the powers opensource models via 🤖
 - [x] Secure Credential Management: Keep your credentials secure using environment variables. 🔑
-- [x] Web Access: Web Access is now available! Unlock a whole new level of awesomeness. 🌐
 
 </details>
 
@@ -89,11 +87,11 @@ To create a custom personality, follow these steps:
 
 ### Step 1. 🎬 Git clone repository
 ```
-git clone https://github.com/mishalhossin/Discord-AI-Chatbot
+git clone https://github.com/YuukiEatsYou/AI-Tao
 ```
 ### Step 2. 📁 Changing directory to cloned directory
 ```
-cd Discord-AI-Chatbot
+cd AI-Tao
 ```
 ### Step 3. 💾 Install requirements
 ```
@@ -117,7 +115,7 @@ python3.10 -m pip install -r requirements.txt
 </details>
 
 ### Step 5. 🔑 Get Groq api key from [here](https://console.groq.com/keys)
-### Step 6. 🔐 Rename `example.env` to `.env` and put the Discord bot token and your Groq key. It will look like this:
+### Step 6. 🔐 Create a`.env` file and put the Discord bot token and your Groq key. It will look like this:
 ```
 DISCORD_TOKEN=YOUR_DISCORD_BOT_TOKEN
 API_KEY=YOUR_GROQ_API_KEY
@@ -167,15 +165,3 @@ sudo zypper update -y && sudo zypper install -y docker-compose
 ```
 sudo docker-compose up --build
 ```
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=mishalhossin/Discord-AI-Chatbot&type=Timeline)](https://star-history.com/#mishalhossin/Discord-AI-Chatbot&Timeline)
-
-### Lovely Contributors : 
-
-<a href="https://github.com/mishalhossin/Discord-AI-Chatbot/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=mishalhossin/Discord-AI-Chatbot" />
-</a>
-
-### Crafted with Care: Made with lots of love and attention to detail. ❤️
