@@ -72,11 +72,7 @@ class OnMessage(commands.Cog):
             author_voice_channel = author_member.voice.channel
 
         if author_voice_channel:
-            voice_channel = await author_voice_channel.connect()
-            voice_channel.play(discord.FFmpegPCMAudio(executable="ffmpeg", source=bytes_obj))
-            while voice_channel.is_playing():
-                pass
-            await voice_channel.disconnect()
+            pass
 
         if response is not None:
             for chunk in split_response(response):
