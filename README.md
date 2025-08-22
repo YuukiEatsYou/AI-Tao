@@ -1,6 +1,16 @@
 # Discord AI Chatbot 🤖
 #### Your Discord AI Companion!
 
+# Note
+because github keeps pissing me off, i moved all my repos at my own gitea instance at 
+
+https://git.yuukicult.com/Yuuki
+
+all future updates will be pushed there
+
+____________________________________
+
+
 ## Features and commands 🌟
 
 <details>
